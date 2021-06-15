@@ -7,9 +7,13 @@ import dill
 def generate_world(name, size):
     level = []
     scale = main.Game.get_scale()
-    for i in range(size):
-        for j in range(size):
-            level.append(main.Tile((i*scale, j*scale), "tiles:grass"))
+    while len(level) < 181:
+        row = []
+        while len(row) < 181:
+            tile_x = 32 * len(row)
+            tile_y = 32 * len(level)
+            row.append(main.Tile((tile_x, tile_y), "tiles:grass"))
+        level.append(row)
 
     # ok now just do the thing where you start spots and grow them
     for i in range(random.randint(5, 10)):
